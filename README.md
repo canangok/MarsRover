@@ -1,4 +1,4 @@
- #MarsRover
+ <h2>MarsRover</h2>
 
 <p>
   A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular, must be navigated by the rovers so that their on board cameras can get a complete view of the surrounding terrain to send back to Earth.
@@ -25,8 +25,8 @@ Each rover will be finished sequentially, which means that the second rover won'
 LMLMLMLMM <br/>
 3 3 E<br/>
 MMRMMRMRRM
- <br/>
-Expected Output: <br/>
+ <br/><br/>
+<b>Expected Output:</b> <br/>
 1 3 N<br/>
 5 1 E<br/>
 
