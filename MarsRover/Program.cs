@@ -8,7 +8,7 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            List<Coordinate> rovers = new List<Coordinate>();
+            Dictionary<Coordinate,string> rovers = new Dictionary<Coordinate,string>();
             string moves = "";
             ConsoleKeyInfo consoleKeyInfo;
 
@@ -18,7 +18,7 @@ namespace MarsRover
             {
                 var plateauCoordinates = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToList();
                 do
-                {
+                 {
                     var startPositions = Console.ReadLine().Trim().Split(' ');
                     moves = Console.ReadLine().ToUpper();
                     Coordinate coordinate = new Coordinate();
@@ -26,15 +26,15 @@ namespace MarsRover
                     coordinate.X = Convert.ToInt32(startPositions[0]);
                     coordinate.Y = Convert.ToInt32(startPositions[1]);
                     coordinate.Direction = (Compass)Enum.Parse(typeof(Compass), startPositions[2].ToUpper());
-                    rovers.Add(coordinate);
+                    rovers.Add(coordinate,moves);
    
                     consoleKeyInfo = Console.ReadKey(true);
                 
                 } while (consoleKeyInfo.Key != ConsoleKey.X);
-
-                foreach (var rove in rovers)
+                   
+                foreach (KeyValuePair<Coordinate, string> rove in rovers)
                 {
-                    rove.Move(moves, plateauCoordinates);
+                    rove.Key.Move(rove.Value, plateauCoordinates);
                 }
             }
             catch (Exception ex)

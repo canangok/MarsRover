@@ -60,7 +60,7 @@ namespace MarsRover
                 case Compass.W: X -= 1;
                     break;
                 default:
-                    throw new Exception($"you entered wrong character in coordinates");
+                    throw new Exception($"You entered wrong character in coordinates");
                     break;
             }
         }
@@ -91,7 +91,7 @@ namespace MarsRover
             }
             else
             {
-                Console.WriteLine("\nRover is here now\n" + X + " " + Y + " " + Direction+"\n");
+                Console.WriteLine($"\nRover is here now\n {X} {Y} {Direction} \n");
             }
         }
     }
