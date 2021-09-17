@@ -16,25 +16,27 @@ namespace MarsRover
 
             try
             {
-                var plateauCoordinates = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToList();
+                var plateauCoordinate = Console.ReadLine().Trim().Split(' ').Select(int.Parse).ToList();
+                //multiple rovers entries
                 do
-                 {
-                    var startPositions = Console.ReadLine().Trim().Split(' ');
+                {
+                    var startPosition = Console.ReadLine().Trim().Split(' ');
                     moves = Console.ReadLine().ToUpper();
                     Coordinate coordinate = new Coordinate();
 
-                    coordinate.X = Convert.ToInt32(startPositions[0]);
-                    coordinate.Y = Convert.ToInt32(startPositions[1]);
-                    coordinate.Direction = (Compass)Enum.Parse(typeof(Compass), startPositions[2].ToUpper());
+                    coordinate.X = Convert.ToInt32(startPosition[0]);
+                    coordinate.Y = Convert.ToInt32(startPosition[1]);
+                    coordinate.Direction = (Compass)Enum.Parse(typeof(Compass), startPosition[2].ToUpper());
                     rovers.Add(coordinate,moves);
-   
-                    consoleKeyInfo = Console.ReadKey(true);
+
+                    consoleKeyInfo = Console.ReadKey(true); 
                 
-                } while (consoleKeyInfo.Key != ConsoleKey.X);
-                   
+                } while (consoleKeyInfo.Key != ConsoleKey.X); 
+                
+                //output
                 foreach (KeyValuePair<Coordinate, string> rove in rovers)
                 {
-                    rove.Key.Move(rove.Value, plateauCoordinates);
+                    rove.Key.MoveInDirection(rove.Value, plateauCoordinate);
                 }
             }
             catch (Exception ex)

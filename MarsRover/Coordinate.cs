@@ -15,7 +15,7 @@ namespace MarsRover
             Y = 0;
             Direction = Compass.N;
         }
-        public void leftRotate()
+        public void RotateLeft()
         {
             switch (Direction)
             {
@@ -31,7 +31,7 @@ namespace MarsRover
             }
         }
 
-        public void rightRotate()
+        public void RotateRight()
         {
             switch (Direction)
             {
@@ -47,7 +47,7 @@ namespace MarsRover
             }
         }
 
-        public void ChangeCoordiates()
+        public void ChangeCoordinates()
         {
             switch (Direction)
             {
@@ -60,34 +60,34 @@ namespace MarsRover
                 case Compass.W: X -= 1;
                     break;
                 default:
-                    throw new Exception($"You entered wrong character in coordinates");
+                    Console.WriteLine("You entered wrong character in coordinates");
                     break;
             }
         }
 
-        public void Move(string moves,List<int> plateauCoordinates)
-        {
+        public void MoveInDirection(string moves,List<int> plateauCoordinate)
+        { 
             for (int i = 0; i < moves.Length; i++)
             {
                 switch (moves[i])
                 {
                     case 'L':
-                        leftRotate();
+                        RotateLeft();
                         break;
                     case 'R':
-                        rightRotate();
+                        RotateRight();
                         break;
                     case 'M':
-                        ChangeCoordiates();
+                        ChangeCoordinates();
                         break;
                     default:
-                        throw new Exception($"You entered wrong character in directions!");  
+                        Console.WriteLine("You entered wrong character in directions!");  
                         break;
                 }
             }
-            if (X < 0 || X > plateauCoordinates[0] || Y < 0 || Y > plateauCoordinates[1])
+            if (X < 0 || X > plateauCoordinate[0] || Y < 0 || Y > plateauCoordinate[1])
             {
-                throw new Exception($"Position ({X},{Y}) is outside the plateau! Position can not be beyond bounderies (0 , 0) and ({plateauCoordinates[0]} , {plateauCoordinates[1]})");
+                throw new Exception($"Position ({X},{Y}) is outside the plateau! Position can not be beyond bounderies (0 , 0) and ({plateauCoordinate[0]} , {plateauCoordinate[1]})");
             }
             else
             {
